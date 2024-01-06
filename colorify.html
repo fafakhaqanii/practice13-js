@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      #demo {
+        width: 150px;
+        height: 150px;
+        background-color: lightgreen;
+      }
+    </style>
+  </head>
+  <body id="demo">
+    <h1></h1>
+    <input type="text" name="fname" id="fname" placeholder="first name" />
+    <button id="btn">submit</button>
+    *****
+    <h2></h2>
+    <input type="text" name="lname" id="lname" />
+    <!-- <div id="demo"></div> -->
+    <script src="node_modules/jquery/dist/jquery.js"></script>
+    <script>
+      $(function () {
+        function generate(min, max) {
+          return Math.floor((max - min) * Math.random()) + min;
+        }
+        function colorify() {
+          let color = ` rgb(${generate(0, 255)}, ${generate(
+            0,
+            255
+          )}, ${generate(0, 255)})`;
+          console.log(colorify);
+          $("#demo").css("background-color", color);
+        }
+        setInterval(colorify, 1000);
+        ///
+        $("button").click(function () {
+          let fName = $("#fname").val();
+          $("h1").text(fName);
+          $("#fname").val("");
+        });
+        $("#lname").keyup(function () {
+          let lName = $("#lname").val();
+          $("h2").text(lName);
+        });
+      });
+    </script>
+  </body>
+</html>
